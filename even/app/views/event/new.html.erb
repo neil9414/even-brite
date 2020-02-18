@@ -1,0 +1,62 @@
+<script>
+$(document).ready(function() {
+  $("#editor").wysibb()
+  $('select').material_select();
+})
+
+  document.addEventListener('DOMContentLoaded', function() {
+    var elems = document.querySelectorAll('select');
+    var instances = M.FormSelect.init(elems, {});
+    $(".select-wrapper").addClass("col s2");
+  });
+
+function updateTextInput(val) {
+          document.getElementById('textInput').value=val; 
+        }
+function updateRangeInput(val) {
+          document.getElementById('inputRange').value=val; 
+        }
+</script>
+
+     <%= form_tag url_for(action: "create"), class: "col s12",method: "post" do %>
+      <%= submit_tag "Create evenment", class:"btn waves-effect waves-light right"%>
+      <br><br>
+
+<div class="row">
+            <div class="input-field col s6">
+              <%= text_field_tag 'title'%>
+                <label for="first_name">Title</label>
+            </div>
+            <div class="input-field col s6">
+              <%= text_field_tag :adress %>
+              <label for="first_name">Adress</label>
+            </div>
+</div>
+<div class="row">
+            <div class="input-field col s6 ">
+                   <%= datetime_select("start", "created_on", html_options = {class:"col s2"})%>
+            </div>
+            <div class="input-field col s6">
+                  <label for="end_date">Duree de l'evenement en minute</label>
+                  <%= text_field_tag :duration %>
+            </div>
+</div>
+<div class="row">
+            <div class="input-field col s11">
+
+    <p class="range-field">
+      <input type="range" id = "inputRange"value="5" min="5" max="1000" step="5" oninput="updateTextInput(this.value);"/>
+    </p>
+    </div>
+                <div class="input-field col s1">
+    <%= text_field_tag :price ,"5", id: "textInput", oninput: " updateRangeInput(this.value)" %>
+        </div>
+    <!DOCTYPE html>
+<html>
+<body>
+
+    </div>
+   
+<%= text_area_tag(:editor, nil)%>
+</div>
+<% end %>
